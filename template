@@ -1,1 +1,8 @@
 https://github.com/chronark/chronark.com.git
+
+chaves da api
+READ_KEY = Td4N9y7K3bpxRzQbqTSQc0srADI0jBrND1hxhcPTgb03iy8XEM
+API_KEY= https://api.cosmicjs.com/v3/buckets/my-products-portifoly-production/
+
+#https://api.cosmicjs.com/v3/buckets/my-products-portifoly-production/
+#/objects/665686aeb6cce150ff0983b0?read_key=Td4N9y7K3bpxRzQbqTSQc0srADI0jBrND1hxhcPTgb03iy8XEM&depth=1&props=slug,title,metadata,

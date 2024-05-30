@@ -1,15 +1,16 @@
 "use client";
-import { Github, Mail, Twitter } from "lucide-react";
+import {  Mail, Linkedin } from "lucide-react";
+import{FaGithub} from 'react-icons/fa'
 import Link from "next/link";
 import { Navigation } from "@/components/nav";
 import { Card } from  '@/components/card';
 
 const socials = [
 	{
-		icon: <Twitter size={20} />,
-		href: "/twitter",
-		label: "Twitter",
-		handle: "Oscar Twitter",
+		icon: <Linkedin  size={20} />,
+		href: "https://www.linkedin.com/in/oscar-rodrigues-dev/",
+		label: "Linkedin",
+		handle: "Oscar Rodrigues",
 	},
 	{
 		icon: <Mail size={20} />,
@@ -18,13 +19,12 @@ const socials = [
 		handle: "oscar.rodrigues.dev@gmail.com",
 	},
 	{
-		icon: <Github size={20} />,
+		icon: <FaGithub size={20} />,
 		href: "https://github.com/oscarRodriguesDev",
 		label: "Github",
 		handle: "Oscar Dev",
 	},
 ];
-
 export default function Example() {
 	return (
 		<div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">

@@ -12,6 +12,7 @@ interface Produto {
     product_name: string;
     product_image: ImageProps;
     description: string;
+    link: string; // Campo adicionado para refletir o JSON atualizado
 }
 
 interface ImageProps {

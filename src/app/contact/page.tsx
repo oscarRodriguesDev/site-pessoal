@@ -32,7 +32,7 @@ export default function Example() {
                 
                 <div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
                     {socials.map((s, index) => (
-                        <Card key={s.id || index}>
+                        <Card key={index || index}>
                             <Link
                                 href={s.href}
                                 target="_blank"

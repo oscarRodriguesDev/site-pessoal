@@ -30,14 +30,15 @@ export default async function ProjectsPage() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto ' }} >
                     {produtos.map((item) => (
 
-                        <ProjectCard
+                        <ProjectCard 
 
                             key={item.product_name}
                             nome={item.product_name}
                             description={item.description}
                             url={item.product_image.url}
                             link={item.link}
-
+                            hover_desc={item.text_hover}
+                       
                         />
 
                     ))}

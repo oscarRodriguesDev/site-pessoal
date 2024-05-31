@@ -6,18 +6,18 @@ import { Analytics } from "@/components/analytics";
 export const metadata: Metadata = {
   title: {
     default: "Oscar Rodrigues",
-    template: "",
+    template: "chronark",
   },
   description: "Portifólio dos serviços desenvolvidos por mim",
   openGraph: {
     title: "Oscar Rodrigues",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "Oscar.hiskra.com.br",
+      "Meu portfolio de produtos e serviços",
+    url: "../../../public/profilepictures.jpg",
+    siteName: "Oscar",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "../../../public/profilepictures.jpg",
         width: 1920,
         height: 1080,
       },
@@ -37,11 +37,11 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "oscar Rodrigues",
     card: "summary_large_image",
   },
   icons: {
-    shortcut: "/favicon.png",
+    shortcut: "/favicon.ico",
   },
 };
 

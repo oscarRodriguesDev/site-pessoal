@@ -43,7 +43,7 @@ export default function Home() {
              Você pode acessar a pagina da minha empresa{" "}
           <Link
             target="_blank"
-            href="https://hiskra.com.br"
+            href="https://oscar.hiskra.com.br"
             className="underline duration-500 hover:text-zinc-300"
           >
            aqui

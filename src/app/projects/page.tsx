@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
                         já finalizados.
                     </p>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto auto' }} >
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto ' }} >
                     {produtos.map((item) => (
 
                         <ProjectCard

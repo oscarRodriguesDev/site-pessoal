@@ -17,7 +17,7 @@ import {
   SiPostgresql,
   SiDocker,
 } from "react-icons/si";
-import profile from "../../../public/profilepictures.jpg";
+import profile from "../../../public/profilepictures.png";
 
 const skills = [
   { name: "React", icon: <FaReact size={16} /> },

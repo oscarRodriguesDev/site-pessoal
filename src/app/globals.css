@@ -8,7 +8,13 @@
   }
 
   body {
-    @apply bg-black text-zinc-100 antialiased;
+    @apply antialiased;
+    @apply bg-white text-zinc-900;
+  }
+
+  .dark body,
+  body.dark {
+    @apply bg-black text-zinc-100;
   }
 
   ::selection {
@@ -20,11 +26,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-zinc-900;
+    @apply bg-zinc-200 dark:bg-zinc-900;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-zinc-700 hover:bg-zinc-600;
+    @apply rounded-full bg-zinc-400 hover:bg-zinc-500 dark:bg-zinc-700 dark:hover:bg-zinc-600;
   }
 }
 

@@ -24,20 +24,20 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-white dark:bg-black">
       <Navigation />
       <div className="relative pt-32 pb-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-200/20 via-transparent to-transparent dark:from-zinc-900/20" />
 
         <div className="relative px-6 mx-auto max-w-7xl">
           <div className="max-w-2xl mb-12 lg:mb-16 animate-fade-in">
-            <span className="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider uppercase border rounded-full text-zinc-400 border-zinc-700/50 bg-zinc-900/50">
+            <span className="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider uppercase border rounded-full text-zinc-500 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700/50 bg-zinc-100 dark:bg-zinc-900/50">
               Portfólio
             </span>
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
               Meus Projetos
             </h1>
-            <p className="mt-4 leading-relaxed text-zinc-400">
+            <p className="mt-4 leading-relaxed text-zinc-500 dark:text-zinc-400">
               Confira alguns dos projetos que desenvolvi ao longo da minha
               carreira como desenvolvedor.
             </p>
@@ -45,8 +45,8 @@ export default async function ProjectsPage() {
 
           {projects.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="flex items-center justify-center w-16 h-16 mb-4 border rounded-full border-zinc-800 bg-zinc-900/50">
-                <span className="text-2xl text-zinc-600">!</span>
+              <div className="flex items-center justify-center w-16 h-16 mb-4 border rounded-full border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/50">
+                <span className="text-2xl text-zinc-400 dark:text-zinc-600">!</span>
               </div>
               <p className="text-zinc-500">
                 Nenhum projeto encontrado. Crie objetos do tipo &quot;projects&quot; no Cosmic JS.

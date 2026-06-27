@@ -43,10 +43,10 @@ const highlights = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-white dark:bg-black">
       <Navigation />
       <div className="relative pt-32 pb-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-200/20 via-transparent to-transparent dark:from-zinc-900/20" />
 
         <div className="relative px-6 mx-auto max-w-7xl">
           {/* Profile Section */}
@@ -61,10 +61,10 @@ export default function About() {
                 height={112}
               />
             </div>
-            <h1 className="text-3xl font-bold text-zinc-100 sm:text-4xl">
+            <h1 className="text-3xl font-bold text-zinc-800 dark:text-zinc-100 sm:text-4xl">
               Oscar Rodrigues
             </h1>
-            <p className="mt-2 text-zinc-400">Desenvolvedor FullStack</p>
+            <p className="mt-2 text-zinc-500 dark:text-zinc-400">Desenvolvedor FullStack</p>
           </div>
 
           {/* Highlights */}
@@ -72,9 +72,9 @@ export default function About() {
             {highlights.map((item) => (
               <div
                 key={item.label}
-                className="flex flex-col items-center p-4 border rounded-xl bg-zinc-900/50 border-zinc-800/50"
+                className="flex flex-col items-center p-4 border rounded-xl bg-zinc-100 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800/50"
               >
-                <span className="text-2xl font-bold text-zinc-100">
+                <span className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   {item.number}
                 </span>
                 <span className="mt-1 text-xs text-zinc-500 text-center">
@@ -88,10 +88,10 @@ export default function About() {
           <div className="max-w-3xl mx-auto mb-16 space-y-6 animate-fade-up">
             <Card>
               <div className="p-6 space-y-4">
-                <h2 className="text-lg font-semibold text-zinc-100">
+                <h2 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
                   Quem sou
                 </h2>
-                <p className="text-sm leading-relaxed text-zinc-400">
+                <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
                   Desenvolvedor Full Stack com mais de 12 anos de experiência no desenvolvimento
                   de sistemas web, plataformas SaaS, APIs REST, dashboards administrativos,
                   automações, integrações e soluções sob medida para empresas de diversos
@@ -135,14 +135,14 @@ export default function About() {
 
           {/* Skills */}
           <div className="max-w-3xl mx-auto animate-fade-up">
-            <h2 className="mb-6 text-lg font-semibold text-center text-zinc-100">
+            <h2 className="mb-6 text-lg font-semibold text-center text-zinc-800 dark:text-zinc-100">
               Tecnologias & Ferramentas
             </h2>
             <div className="flex flex-wrap justify-center gap-3">
               {skills.map((skill) => (
                 <span
                   key={skill.name}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-200 border rounded-full text-zinc-300 border-zinc-700/50 bg-zinc-900/50 hover:border-zinc-500 hover:text-zinc-100 hover:bg-zinc-800/50"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-200 border rounded-full text-zinc-600 dark:text-zinc-300 border-zinc-300 dark:border-zinc-700/50 bg-zinc-100 dark:bg-zinc-900/50 hover:border-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800/50"
                 >
                   {skill.icon}
                   {skill.name}

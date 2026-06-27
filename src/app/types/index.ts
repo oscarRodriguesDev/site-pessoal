@@ -1,22 +1,28 @@
-export interface ProductAndServicesProps {
-    object: {
-        slug: string;
-        title: string;
-        metadata: {
-            produto: Produto[];
-        }
-    }
+export interface CosmicObjectsResponse {
+  objects: ProjectObject[];
+  total: number;
 }
 
-interface Produto {
-    product_name: string;
-    product_image: ImageProps;
-    description: string;
-    link: string; // Campo adicionado para refletir o JSON atualizado
-    text_hover:string;
+export interface ProjectObject {
+  slug: string;
+  title: string;
+  type: string;
+  metadata: ProjectMetadata;
 }
 
-interface ImageProps {
-    url: string;
-    imgix_url: string;
+export interface ProjectMetadata {
+  title: string;
+  short_description: string;
+  description: string;
+  featured_image: CosmicImage | null;
+  screenshots: CosmicImage[] | null;
+  tech_stack: string[];
+  live_url: string;
+  github_url: string | null;
+  featured: boolean;
+}
+
+export interface CosmicImage {
+  url: string;
+  imgix_url: string;
 }

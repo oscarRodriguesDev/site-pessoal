@@ -1,65 +1,99 @@
 "use client";
-import { Mail, Linkedin } from "lucide-react";
-import { FaGithub } from 'react-icons/fa'
+import { Mail, Linkedin, MapPin } from "lucide-react";
+import { FaGithub, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { Navigation } from "@/components/nav";
-import { Card } from '@/components/card';
+import { Card } from "@/components/card";
+
 const socials = [
-    {
-        icon: <Linkedin size={20} />,
-        href: "https://www.linkedin.com/in/oscar-rodrigues-dev/",
-        label: "Linkedin",
-        handle: "Oscar Rodrigues",
-    },
-    {
-        icon: <Mail size={20} />,
-        href: "mailto:oscar@hiskra.com.br",
-        label: "Email",
-        handle: "oscar@hiskra.com.br",
-    },
-    {
-        icon: <FaGithub size={20} />,
-        href: "https://github.com/oscarRodriguesDev",
-        label: "Github",
-        handle: "OscarRodriguesDev",
-    },
+  {
+    icon: <Linkedin size={22} />,
+    href: "https://www.linkedin.com/in/oscar-rodrigues-dev/",
+    label: "LinkedIn",
+    handle: "Oscar Rodrigues",
+    description: "Conecte-se comigo no LinkedIn",
+  },
+  {
+    icon: <FaGithub size={22} />,
+    href: "https://github.com/oscarRodriguesDev",
+    label: "GitHub",
+    handle: "OscarRodriguesDev",
+    description: "Confira meus repositórios",
+  },
+  {
+    icon: <Mail size={22} />,
+    href: "mailto:oscar@hiskra.com.br",
+    label: "E-mail",
+    handle: "oscar@hiskra.com.br",
+    description: "Envie uma mensagem",
+  },
+  {
+    icon: <FaWhatsapp size={22} />,
+    href: "https://wa.me/5511999999999",
+    label: "WhatsApp",
+    handle: "(11) 99999-9999",
+    description: "Vamos conversar",
+  },
 ];
+
 export default function Contato() {
-    return (
-        <div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
-            <Navigation />
-            <div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-                
-                <div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
-                    {socials.map((s, index) => (
-                        <Card key={index || index}>
-                            <Link
-                                href={s.href}
-                                target="_blank"
-                                className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24 lg:pb-48 md:p-16"
-                            >
-                                <span
-                                    className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
-                                    aria-hidden="true"
-                                />
-                                <span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">
-                                    {s.icon}
-                                </span>{" "}
-                                <div className="z-10 flex flex-col items-center">
-                                    <span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-200 group-hover:text-white font-display">
-                                        {s.handle}
-                                    </span>
-                                    <span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
-                                        {s.label}
-                                    </span>
-                                </div>
-                            </Link>
-                        </Card>
-                    ))}
-                </div>
+  return (
+    <div className="min-h-screen bg-black">
+      <Navigation />
+      <div className="relative pt-32 pb-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/20 via-transparent to-transparent" />
 
-            </div>
+        <div className="relative px-6 mx-auto max-w-7xl">
+          {/* Header */}
+          <div className="max-w-2xl mx-auto mb-12 text-center lg:mb-16 animate-fade-in">
+            <span className="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider uppercase border rounded-full text-zinc-400 border-zinc-700/50 bg-zinc-900/50">
+              Contato
+            </span>
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+              Vamos trabalhar juntos
+            </h1>
+            <p className="mt-4 text-zinc-400">
+              Estou disponível para novos projetos, parcerias e oportunidades.
+              Escolha o canal de sua preferência.
+            </p>
+          </div>
 
+          {/* Contact Cards */}
+          <div className="grid max-w-4xl grid-cols-1 gap-6 mx-auto sm:grid-cols-2 animate-fade-up">
+            {socials.map((s, index) => (
+              <Card key={index}>
+                <Link
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-5 p-6 transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-14 h-14 text-zinc-300 transition-all duration-300 border rounded-2xl border-zinc-700/60 bg-zinc-900/80 group-hover:border-zinc-500 group-hover:text-white group-hover:bg-zinc-800/80 group-hover:scale-105">
+                    {s.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base font-semibold text-zinc-100 group-hover:text-white">
+                      {s.handle}
+                    </h3>
+                    <p className="mt-0.5 text-sm text-zinc-500">
+                      {s.label}
+                    </p>
+                    <p className="text-xs text-zinc-600">
+                      {s.description}
+                    </p>
+                  </div>
+                </Link>
+              </Card>
+            ))}
+          </div>
+
+          {/* Location */}
+          <div className="flex items-center justify-center gap-2 mt-16 text-sm text-zinc-600">
+            <MapPin size={14} />
+            <span>Brasil — Disponível para trabalho remoto</span>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }

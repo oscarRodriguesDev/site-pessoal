@@ -1,23 +1,29 @@
 import "./globals.css";
 
 import { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { Analytics } from "@/components/analytics";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://oscarrodrigues.dev"),
   title: {
     default: "Oscar Rodrigues",
-    template: "chronark",
+    template: "%s | Oscar Rodrigues",
   },
-  description: "Portifólio dos serviços desenvolvidos por mim",
+  description: "Desenvolvedor FullStack - Portfólio de projetos e serviços",
   openGraph: {
     title: "Oscar Rodrigues",
-    description:
-      "Meu portfolio de produtos e serviços",
-    url: "../../../public/profilepictures.jpg",
-    siteName: "Oscar",
+    description: "Desenvolvedor FullStack - Portfólio de projetos e serviços",
+    url: "https://oscarrodrigues.dev",
+    siteName: "Oscar Rodrigues",
     images: [
       {
-        url: "../../../public/profilepictures.jpg",
+        url: "https://cdn.cosmicjs.com/profilepictures.jpg",
         width: 1920,
         height: 1080,
       },
@@ -37,7 +43,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "oscar Rodrigues",
+    title: "Oscar Rodrigues",
     card: "summary_large_image",
   },
   icons: {
@@ -45,14 +51,13 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" className={inter.variable}>
       <head>
         <Analytics />
       </head>

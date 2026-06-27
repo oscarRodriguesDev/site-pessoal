@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://oscarrodrigues.dev"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
   title: {
     default: "Oscar Rodrigues",
     template: "%s | Oscar Rodrigues",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Oscar Rodrigues",
     description: "Desenvolvedor FullStack - Portfólio de projetos e serviços",
-    url: "https://oscarrodrigues.dev",
+    url: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
     siteName: "Oscar Rodrigues",
     images: [
       {

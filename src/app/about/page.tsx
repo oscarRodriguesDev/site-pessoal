@@ -92,21 +92,42 @@ export default function About() {
                   Quem sou
                 </h2>
                 <p className="text-sm leading-relaxed text-zinc-400">
-                  Especialista em desenvolvimento de aplicações web com 12 anos
-                  de experiência na área de tecnologia. Possuo graduação em
-                  Análise e Desenvolvimento de Sistemas e atualmente desempenho o
-                  papel de Gestor na Dikma Digital, uma startup de inovação, e
-                  sou o DPO do grupo Dikma, onde garanto a conformidade com a
-                  Lei Geral de Proteção de Dados (LGPD), área na qual estou
-                  também buscando minha segunda especialização.
+                  Desenvolvedor Full Stack com mais de 12 anos de experiência no desenvolvimento
+                  de sistemas web, plataformas SaaS, APIs REST, dashboards administrativos,
+                  automações, integrações e soluções sob medida para empresas de diversos
+                  segmentos. Atuo em todas as etapas do desenvolvimento, desde a arquitetura da
+                  aplicação e modelagem de banco de dados até a implantação, monitoramento e
+                  manutenção em ambientes de produção, sempre priorizando performance,
+                  escalabilidade, segurança e qualidade de código.
                 </p>
+
                 <p className="text-sm leading-relaxed text-zinc-400">
-                  Minha experiência abrange comunicação organizacional, marketing
-                  digital, criação de sites, aplicativos e sistemas, com foco em
-                  atender demandas home office. Estou comprometido em aprimorar
-                  continuamente minhas habilidades e conhecimentos para
-                  proporcionar soluções inovadoras e eficazes em todas as minhas
-                  atividades profissionais.
+                  Tenho domínio em Next.js, React, Node.js, TypeScript, JavaScript, Prisma,
+                  PostgreSQL, MySQL, Docker, Git, Linux e arquitetura de aplicações modernas.
+                  Possuo ampla experiência na criação de sistemas administrativos, e-commerces,
+                  marketplaces, ERPs, CRMs, portais corporativos, autenticação, controle de
+                  permissões, processamento de pagamentos, consumo e desenvolvimento de APIs,
+                  além de integrações com serviços de terceiros, automação de processos e
+                  implementação de soluções baseadas em Inteligência Artificial.
+                </p>
+
+                <p className="text-sm leading-relaxed text-zinc-400">
+                  Sou especialista em Desenvolvimento de Sistemas Web, Gestão de Projetos com
+                  foco em Inovação e Ferramentas Tecnológicas e Data Protection Officer (DPO).
+                  Também atuo com Engenharia de Prompts, desenvolvimento de agentes de IA,
+                  chatbots inteligentes, automação de fluxos de trabalho e integração de modelos
+                  de linguagem em aplicações corporativas, transformando processos manuais em
+                  soluções inteligentes e escaláveis.
+                </p>
+
+                <p className="text-sm leading-relaxed text-zinc-400">
+                  Minha experiência também inclui infraestrutura, DevOps, deploy em VPS e
+                  servidores Linux, Docker, arquitetura de software, segurança da informação e
+                  conformidade com a LGPD. Além do desenvolvimento de sistemas, produzo
+                  conteúdos para mídias digitais utilizando Inteligência Artificial, criando
+                  imagens, vídeos, peças publicitárias, identidade visual, conteúdos para redes
+                  sociais e trilhas sonoras personalizadas para campanhas, empresas e produtos,
+                  combinando criatividade com tecnologia para entregar soluções completas.
                 </p>
               </div>
             </Card>

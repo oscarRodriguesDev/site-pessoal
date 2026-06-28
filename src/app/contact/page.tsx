@@ -25,12 +25,12 @@ const socials = [
     label: "E-mail",
     handle: "oscar@hiskra.com.br",
   },
-  {
-    icon: <FaWhatsapp size={20} />,
-    href: "https://wa.me/5527988991663",
-    label: "WhatsApp",
-    handle: "(27) 98899-1663",
-  },
+  /*   {
+      icon: <FaWhatsapp size={20} />,
+      href: "https://wa.me/5527988991663",
+      label: "WhatsApp",
+      handle: "(27) 98899-1663",
+    }, */
 ];
 
 export default function Contato() {

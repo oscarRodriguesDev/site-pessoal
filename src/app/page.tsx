@@ -12,7 +12,7 @@ const socialLinks = [
   },
   {
     icon: <FaLinkedinIn size={18} />,
-    href: "https://www.linkedin.com/in/oscar-rodrigues-dev/",
+    href: "https://www.linkedin.com/in/oscar-r-neto/",
     label: "LinkedIn",
   },
   {
@@ -22,7 +22,7 @@ const socialLinks = [
   },
   {
     icon: <FaWhatsapp size={18} />,
-    href: "https://wa.me/5511999999999",
+    href: "https://wa.me/5527988991663",
     label: "WhatsApp",
   },
 ];

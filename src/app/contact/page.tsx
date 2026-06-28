@@ -9,7 +9,7 @@ import { Card } from "@/components/card";
 const socials = [
   {
     icon: <Linkedin size={20} />,
-    href: "https://www.linkedin.com/in/oscar-rodrigues-dev/",
+    href: "https://www.linkedin.com/in/oscar-r-neto/",
     label: "LinkedIn",
     handle: "Oscar Rodrigues",
   },
@@ -21,15 +21,15 @@ const socials = [
   },
   {
     icon: <Mail size={20} />,
-    href: "mailto:oscar@hiskra.com.br",
+    href: "mailto:oscar.gst.projetos@gmail.com",
     label: "E-mail",
     handle: "oscar@hiskra.com.br",
   },
   {
     icon: <FaWhatsapp size={20} />,
-    href: "https://wa.me/5511999999999",
+    href: "https://wa.me/5527988991663",
     label: "WhatsApp",
-    handle: "(11) 99999-9999",
+    handle: "(27) 98899-1663",
   },
 ];
 

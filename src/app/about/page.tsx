@@ -36,9 +36,9 @@ const skills = [
 ];
 
 const highlights = [
-  { number: "12+", label: "Anos de Experiência" },
-  { number: "50+", label: "Projetos Entregues" },
-  { number: "10+", label: "Tecnologias Dominadas" },
+  { title: "Ágil", desc: "Entregas rápidas sem perder qualidade" },
+  { title: "Eficiente", desc: "Soluções otimizadas que realmente funcionam" },
+  { title: "Confiável", desc: "Código limpo, seguro e bem documentado" },
 ];
 
 export default function About() {
@@ -71,14 +71,14 @@ export default function About() {
           <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-16 animate-fade-up">
             {highlights.map((item) => (
               <div
-                key={item.label}
+                key={item.title}
                 className="flex flex-col items-center p-4 border rounded-xl bg-zinc-100 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800/50"
               >
-                <span className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
-                  {item.number}
+                <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">
+                  {item.title}
                 </span>
-                <span className="mt-1 text-xs text-zinc-500 text-center">
-                  {item.label}
+                <span className="mt-1 text-[11px] text-zinc-500 text-center leading-relaxed">
+                  {item.desc}
                 </span>
               </div>
             ))}

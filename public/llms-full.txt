@@ -1,0 +1,129 @@
+# Oscar Rodrigues — Conteúdo Completo do Site
+
+Este arquivo contém todo o texto exibido no site https://portfolio.hiskra.com.br, formatado para ser facilmente interpretado por modelos de linguagem e sistemas de IA.
+
+---
+
+## Página Inicial (Home)
+
+### Título
+OSCAR RODRIGUES
+
+### Subtítulo
+Desenvolvedor FullStack
+
+### Descrição
+Transformando ideias em soluções digitais há mais de 12 anos. Especialista em React, Next.js, Python e Inteligência Artificial.
+
+### Links
+- Ver Projetos: /projects
+- Sobre Mim: /about
+
+### Redes Sociais
+- GitHub: https://github.com/oscarRodriguesDev
+- LinkedIn: https://www.linkedin.com/in/oscar-r-neto/
+- Email: oscar@hiskra.com.br
+- WhatsApp: https://wa.me/5527988991663
+
+---
+
+## Página Sobre (About)
+
+### Título
+Sobre Mim
+
+### Conteúdo
+Oscar Rodrigues é um desenvolvedor FullStack com mais de 12 anos de experiência em tecnologia. Sua paixão por código e inovação o levou a trabalhar em diversos projetos, desde startups até empresas consolidadas.
+
+### Diferenciais
+- **Ágil:** Entrega rápida sem comprometer a qualidade
+- **Eficiente:** Soluções otimizadas para melhor performance
+- **Confiável:** Comprometimento com prazos e resultados
+
+### Habilidades
+- React & Next.js
+- TypeScript
+- Python
+- Inteligência Artificial
+- Node.js
+- Tailwind CSS
+- Framer Motion
+- Git & GitHub
+
+---
+
+## Página Projetos (Projects)
+
+### Título
+Projetos
+
+### Descrição
+Uma seleção dos meus melhores trabalhos e projetos recentes. Cada projeto representa um desafio único e uma solução criativa.
+
+### Funcionalidades da Página
+- Grid responsivo de projetos
+- Carrossel de imagens com navegação automática
+- Tags de tecnologias utilizadas
+- Links para deploy ao vivo e repositório GitHub
+- Projetos buscados dinamicamente via Cosmic JS CMS
+
+---
+
+## Página Contato (Contact)
+
+### Título
+Contato
+
+### Descrição
+Vamos conversar? Estou disponível para projetos freelance, consultorias e oportunidades de trabalho.
+
+### Formulário
+- Nome
+- Email
+- Telefone
+- Mensagem
+
+### Informações de Contato
+- **Email:** oscar.gst.projetos@gmail.com
+- **WhatsApp:** +55-27-98899-1663
+- **LinkedIn:** linkedin.com/in/oscar-r-neto
+- **GitHub:** github.com/oscarRodriguesDev
+
+### Localização
+Serra, ES — Brasil — Atendimento 100% Remoto
+
+---
+
+## Informações Técnicas do Site
+
+### Stack Tecnológica
+- **Framework:** Next.js 14.2.3 (App Router)
+- **Linguagem:** TypeScript 5
+- **UI Library:** React 18
+- **Estilização:** Tailwind CSS 3.4.1
+- **Animações:** Framer Motion 11.2.6
+- **CMS:** Cosmic JS (Headless)
+- **Análises:** Beam Analytics
+- **Fonte:** Inter (Google Fonts)
+- ** Hospedagem:** Vercel
+
+### Funcionalidades
+- Modo Dark/Light com persistência
+- Animação de partículas interativa
+- Navegação sticky com transparência dinâmica
+- Design responsivo mobile-first
+- SEO otimizado com Schema.org
+- Carregamento otimizado de imagens
+
+### Idioma
+Português Brasileiro (pt-BR)
+
+---
+
+## Sobre a Hiskra
+
+A Hiskra é a empresa de Oscar Rodrigues, focada em desenvolvimento de soluções digitais sob medida. Especializada em:
+- Desenvolvimento web completo
+- Integração com inteligência artificial
+- Consultoria tecnológica
+- Projetos remotos para clientes globais

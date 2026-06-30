@@ -10,27 +10,61 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const baseUrl = "https://portfolio.hiskra.com.br";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
+  metadataBase: new URL(baseUrl),
   title: {
-    default: "Oscar Rodrigues",
+    default: "Oscar Rodrigues | Desenvolvedor FullStack",
     template: "%s | Oscar Rodrigues",
   },
-  description: "Desenvolvedor FullStack - Portfólio de projetos e serviços",
+  description:
+    "Portfólio de Oscar Rodrigues, desenvolvedor FullStack com mais de 12 anos de experiência. Especialista em React, Next.js, Python e Inteligência Artificial. Soluções digitais sob medida.",
+  keywords: [
+    "Oscar Rodrigues",
+    "desenvolvedor fullstack",
+    "React",
+    "Next.js",
+    "Python",
+    "inteligência artificial",
+    "desenvolvimento web",
+    "portfólio",
+    "freelancer",
+    "remoto",
+    "Brasil",
+    "Hiskra",
+  ],
+  authors: [{ name: "Oscar Rodrigues" }],
+  creator: "Oscar Rodrigues",
+  publisher: "Oscar Rodrigues",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "Oscar Rodrigues",
-    description: "Desenvolvedor FullStack - Portfólio de projetos e serviços",
-    url: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
+    type: "website",
+    locale: "pt_BR",
+    url: baseUrl,
     siteName: "Oscar Rodrigues",
+    title: "Oscar Rodrigues | Desenvolvedor FullStack",
+    description:
+      "Portfólio de Oscar Rodrigues, desenvolvedor FullStack com mais de 12 anos de experiência. Especialista em React, Next.js, Python e Inteligência Artificial.",
     images: [
       {
         url: "https://cdn.cosmicjs.com/profilepictures.jpg",
         width: 1920,
         height: 1080,
+        alt: "Oscar Rodrigues - Desenvolvedor FullStack",
       },
     ],
-    locale: "pt-BR",
-    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oscar Rodrigues | Desenvolvedor FullStack",
+    description:
+      "Portfólio de Oscar Rodrigues, desenvolvedor FullStack com mais de 12 anos de experiência.",
+    images: ["https://cdn.cosmicjs.com/profilepictures.jpg"],
   },
   robots: {
     index: true,
@@ -43,9 +77,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  twitter: {
-    title: "Oscar Rodrigues",
-    card: "summary_large_image",
+  alternates: {
+    canonical: baseUrl,
   },
   icons: {
     shortcut: "/favicon.ico",
@@ -57,14 +90,86 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${baseUrl}#person`,
+    name: "Oscar Rodrigues",
+    url: baseUrl,
+    image: "https://cdn.cosmicjs.com/profilepictures.jpg",
+    description:
+      "Desenvolvedor FullStack com mais de 12 anos de experiência. Especialista em React, Next.js, Python e Inteligência Artificial.",
+    jobTitle: "Desenvolvedor FullStack",
+    email: "oscar.gst.projetos@gmail.com",
+    telephone: "+55-27-98899-1663",
+    worksFor: {
+      "@type": "Organization",
+      name: "Hiskra",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Serra",
+      addressRegion: "ES",
+      addressCountry: "BR",
+    },
+    sameAs: [
+      "https://github.com/oscarRodriguesDev",
+      "https://www.linkedin.com/in/oscar-r-neto/",
+    ],
+    knowsAbout: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "Inteligência Artificial",
+      "Desenvolvimento Web",
+      "FullStack Development",
+    ],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${baseUrl}#website`,
+    name: "Oscar Rodrigues",
+    url: baseUrl,
+    description:
+      "Portfólio de Oscar Rodrigues, desenvolvedor FullStack com mais de 12 anos de experiência.",
+    publisher: { "@id": `${baseUrl}#person` },
+    inLanguage: "pt-BR",
+  };
+
+  const portfolioSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `${baseUrl}#portfolio`,
+    name: "Portfólio de Oscar Rodrigues",
+    url: baseUrl,
+    description:
+      "Coleção de projetos e trabalhos de Oscar Rodrigues, desenvolvedor FullStack.",
+    author: { "@id": `${baseUrl}#person` },
+    inLanguage: "pt-BR",
+  };
+
   return (
-    <html lang="pt-br" className={inter.variable}>
+    <html lang="pt-BR" className={inter.variable}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              organizationSchema,
+              websiteSchema,
+              portfolioSchema,
+            ]),
+          }}
+        />
         <Analytics />
       </head>
       <body
-        className={`${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
-          }`}
+        className={`${
+          process.env.NODE_ENV === "development" ? "debug-screens" : undefined
+        }`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

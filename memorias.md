@@ -28,6 +28,15 @@
 - Inclui: badges, features, tech stack, estrutura, instalação, deploy
 - Documentação completa do projeto para portfólio
 
+**IMPLEMENTADO SEO/GEO COMPLETO | AUTOR: VIBECODE**
+- Atualizado layout.tsx com metadados SEO completos
+- Criado public/robots.txt para crawlers e AI bots
+- Criado src/app/sitemap.ts com todas as páginas
+- Criado public/llms.txt para AI crawlers (GEO)
+- Criado public/llms-full.txt com conteúdo completo
+- Adicionado Schema.org JSON-LD (Person, WebSite, CreativeWork)
+- Dados pessoais preenchidos corretamente
+
 ---
 
 ## Padrões Identificados
@@ -49,3 +58,15 @@
 - Usuário definiu regras estritas de colaboração
 - Foco em SEO e GEO para projetos Next.js
 - README profissional criado para portfólio pessoal
+
+---
+
+## Dados Pessoais do Usuário
+
+- **Nome:** Oscar Rodrigues
+- **Profissão:** Desenvolvedor FullStack
+- **Empresa:** Hiskra
+- **Email:** oscar.gst.projetos@gmail.com
+- **Telefone:** +55-27-98899-1663
+- **Localização:** Serra, ES - Brasil
+- **URL do Site:** https://portfolio.hiskra.com.br

@@ -1,0 +1,35 @@
+# Oscar Rodrigues
+
+> Desenvolvedor FullStack com mais de 12 anos de experiência. Especialista em React, Next.js, Python e Inteligência Artificial.
+
+## Sobre
+
+Oscar Rodrigues é um desenvolvedor FullStack apaixonado por tecnologia e inovação. Com mais de 12 anos de experiência no mercado, ele transforma ideias em soluções digitais completas, desde o front-end interativo até o back-end robusto e integração com inteligência artificial.
+
+## Especialidades
+
+- **Frontend:** React, Next.js, TypeScript, Tailwind CSS
+- **Backend:** Python, Node.js, APIs RESTful
+- **Inteligência Artificial:** Machine Learning, Processamento de Linguagem Natural
+- **DevOps:** CI/CD, Docker, Deploy em nuvem
+- **Ferramentas:** Git, Figma, VS Code
+
+## Portfólio
+
+Visite meu portfólio para ver exemplos dos meus trabalhos e projetos recentes.
+
+## Contato
+
+- **Email:** oscar.gst.projetos@gmail.com
+- **WhatsApp:** +55-27-98899-1663
+- **LinkedIn:** linkedin.com/in/oscar-r-neto
+- **GitHub:** github.com/oscarRodriguesDev
+- **Site:** https://portfolio.hiskra.com.br
+
+## Localização
+
+Serra, ES — Brasil — Atendimento 100% Remoto
+
+## Tecnologias
+
+React, Next.js, TypeScript, Python, Node.js, Tailwind CSS, Framer Motion, Cosmic JS, Vercel

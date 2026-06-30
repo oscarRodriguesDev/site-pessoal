@@ -17,6 +17,21 @@
 - Variáveis de ambiente documentadas
 - Instruções de deploy
 
+### [PED-002] - Implementar SEO/GEO Completo
+
+**Data:** 2026-06-29
+**Status:** Concluído
+**Commit:** 1270e76
+**Descrição:** Usuário solicitou implementação de SEO/GEO para o site portfolio.hiskra.com.br
+**Resultado:**
+- layout.tsx: Metadados SEO completos com OpenGraph, Twitter Cards
+- layout.tsx: Schema.org JSON-LD (Person, WebSite, CreativeWork)
+- public/robots.txt: Regras para crawlers e AI bots
+- src/app/sitemap.ts: Sitemap dinâmico com todas as páginas
+- public/llms.txt: Resumo para AI crawlers (GEO)
+- public/llms-full.txt: Conteúdo completo para AI crawlers
+- Dados pessoais preenchidos corretamente
+
 ---
 
 ## Formato de Registro

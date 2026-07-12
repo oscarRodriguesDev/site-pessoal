@@ -190,6 +190,50 @@ export default function AdminDashboard() {
     setScreenshots(screenshots.filter((_, i) => i !== index));
   }
 
+  /**
+   * Handler para Ctrl+V: detecta imagem na clipboard e faz upload.
+   * Retorna true se colou uma imagem, false se não tinha imagem.
+   */
+  async function handleImagePaste(
+    e: React.ClipboardEvent,
+    target: "featured" | "screenshot"
+  ): Promise<boolean> {
+    const items = e.clipboardData?.items;
+    if (!items) return false;
+
+    let imageFile: File | null = null;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.type.startsWith("image/")) {
+        imageFile = item.getAsFile();
+        break;
+      }
+    }
+
+    if (!imageFile) return false;
+
+    e.preventDefault();
+
+    // Cria um nome único pro arquivo
+    const ext = imageFile.type.split("/")[1] || "png";
+    const fileName = `screenshot-${Date.now()}.${ext}`;
+    const file = new File([imageFile], fileName, { type: imageFile.type });
+
+    if (target === "featured") {
+      setUploadingFeatured(true);
+      const url = await uploadFile(file);
+      if (url) setFeaturedImage(url);
+      setUploadingFeatured(false);
+    } else {
+      setUploadingScreenshot(true);
+      const url = await uploadFile(file);
+      if (url) setScreenshots([...screenshots, url]);
+      setUploadingScreenshot(false);
+    }
+
+    return true;
+  }
+
   async function uploadFile(file: File): Promise<string | null> {
     const formData = new FormData();
     formData.append("file", file);
@@ -507,8 +551,10 @@ export default function AdminDashboard() {
                       type="url"
                       value={featuredImage}
                       onChange={(e) => setFeaturedImage(e.target.value)}
+                      onPaste={(e) => handleImagePaste(e, "featured")}
                       className="flex-1 rounded-xl border border-zinc-300/60 dark:border-zinc-700/60 bg-white dark:bg-zinc-900/80 px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400/40 dark:focus:ring-zinc-600/40 focus:border-zinc-400 dark:focus:border-zinc-600 transition-all duration-200"
-                      placeholder="https://cdn.cosmicjs.com/imagem.jpg"
+                      placeholder="URL da imagem ou Ctrl+V para colar"
+                      title="Cole uma URL ou pressione Ctrl+V para colar uma imagem da área de transferência"
                     />
                     <input
                       ref={featuredInputRef}
@@ -566,8 +612,10 @@ export default function AdminDashboard() {
                       onKeyDown={(e) =>
                         e.key === "Enter" && (e.preventDefault(), addScreenshot())
                       }
+                      onPaste={(e) => handleImagePaste(e, "screenshot")}
                       className="flex-1 rounded-xl border border-zinc-300/60 dark:border-zinc-700/60 bg-white dark:bg-zinc-900/80 px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400/40 dark:focus:ring-zinc-600/40 focus:border-zinc-400 dark:focus:border-zinc-600 transition-all duration-200"
-                      placeholder="https://cdn.cosmicjs.com/screenshot.jpg"
+                      placeholder="URL ou Ctrl+V para colar print"
+                      title="Cole uma URL ou pressione Ctrl+V para colar uma imagem da área de transferência"
                     />
                     <button
                       type="button"

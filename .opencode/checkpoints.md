@@ -2,6 +2,22 @@
 
 ## Última Sessão
 
+### 2026-07-11 - Correções Login + Upload de Imagens
+
+**Estado Final:**
+- Branch: main
+- Commits: 1c9ba2f
+- Build: ✅ Sucesso
+
+**O que foi corrigido/melhorado:**
+- **Cookie path** alterado de `/admins` para `/` — resolve o problema de login
+- **Logout** corrigido com path compatível
+- **Middleware simplificado** — verifica apenas presença do cookie (validação JFT real nas APIs)
+- **Upload de imagens** — nova API `/api/admins/upload` integrada ao Cosmic JS Media
+- **Dashboard** — upload direto de screenshots e imagem de destaque com preview
+
+---
+
 ### 2026-07-11 - Área Admin Secreta
 
 **Estado Final:**

@@ -32,6 +32,21 @@
 - public/llms-full.txt: Conteúdo completo para AI crawlers
 - Dados pessoais preenchidos corretamente
 
+### [PED-003] - Criar Área Admin Secreta para Postar Portfólio
+
+**Data:** 2026-07-11
+**Status:** Concluído
+**Commit:** (hash será definido)
+**Descrição:** Usuário solicitou rota secreta `/admins/login` com autenticação para postar trabalhos do portfólio diretamente do site.
+**Credenciais:** oscar.rodrigues / (definida na .env como ADMIN_PASSWORD)
+**Resultado:**
+- Sistema de autenticação via JWT com cookie httpOnly
+- Página de login em `/admins/login` com design consistente
+- Dashboard protegido em `/admins/dashboard` com formulário completo
+- API de criação de projetos integrada ao Cosmic JS
+- Middleware de proteção para rotas admin
+- Campos: título, slug, descrições, tech stack, URLs, screenshots
+
 ---
 
 ## Formato de Registro

@@ -61,6 +61,31 @@
 
 ---
 
+---
+
+### 2026-07-11 - Área Admin Secreta
+
+**ALTERAÇÃO: Criação de área administrativa secreta | AUTOR: VIBECODE**
+
+- Criado sistema de login em `/admins/login` com autenticação via JWT
+- Criado dashboard em `/admins/dashboard` para postar projetos no Cosmic JS
+- Adicionadas variáveis de ambiente: `ADMIN_USER`, `ADMIN_PASSWORD`, `JWT_SECRET`
+- Instalada biblioteca `jose` para geração/verificação de tokens JWT
+- Criado middleware de proteção para rotas `/admins/dashboard`
+- Integração com Cosmic JS via API routes para criar e listar projetos
+- Formulário completo com campos: título, slug, descrições, tech stack, URLs, imagens
+
+**Rotas criadas:**
+- `GET /admins/login` — Página de login
+- `GET /admins/dashboard` — Dashboard protegido
+- `POST /api/admins/login` — API de autenticação
+- `GET/POST /api/admins/projects` — API de gerenciamento de projetos
+- `GET /api/admins/check` — API de verificação de sessão
+
+**Credenciais:** oscar.rodrigues / (definida no .env)
+
+---
+
 ## Dados Pessoais do Usuário
 
 - **Nome:** Oscar Rodrigues

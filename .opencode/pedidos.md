@@ -36,7 +36,7 @@
 
 **Data:** 2026-07-11
 **Status:** Concluído
-**Commit:** (hash será definido)
+**Commit:** 8aa7c55
 **Descrição:** Usuário solicitou rota secreta `/admins/login` com autenticação para postar trabalhos do portfólio diretamente do site.
 **Credenciais:** oscar.rodrigues / (definida na .env como ADMIN_PASSWORD)
 **Resultado:**

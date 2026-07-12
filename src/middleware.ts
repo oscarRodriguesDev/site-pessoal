@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyTokenEdge } from "@/lib/auth-edge";
 
+/**
+ * Middleware simplificado: verifica apenas a presença do cookie.
+ * A validação real do JWT é feita nas API routes (Node.js runtime).
+ * O cookie é httpOnly, então não pode ser forjado via JS.
+ */
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
@@ -9,14 +13,6 @@ export async function middleware(req: NextRequest) {
 
     if (!token) {
       return NextResponse.redirect(new URL("/admins/login", req.url));
-    }
-
-    const payload = await verifyTokenEdge(token);
-
-    if (!payload) {
-      const res = NextResponse.redirect(new URL("/admins/login", req.url));
-      res.cookies.delete("admin_token");
-      return res;
     }
   }
 

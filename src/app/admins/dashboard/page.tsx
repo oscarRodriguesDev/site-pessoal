@@ -1,8 +1,17 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
-import { LogOut, Plus, X, ExternalLink, Github, Trash2 } from "lucide-react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import {
+  LogOut,
+  Plus,
+  X,
+  ExternalLink,
+  Github,
+  Trash2,
+  Upload,
+  Image,
+} from "lucide-react";
 
 interface Project {
   slug: string;
@@ -40,6 +49,10 @@ export default function AdminDashboard() {
   const [featuredImage, setFeaturedImage] = useState("");
   const [screenshots, setScreenshots] = useState<string[]>([]);
   const [screenshotInput, setScreenshotInput] = useState("");
+  const [uploadingFeatured, setUploadingFeatured] = useState(false);
+  const [uploadingScreenshot, setUploadingScreenshot] = useState(false);
+  const featuredInputRef = useRef<HTMLInputElement>(null);
+  const screenshotInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetchProjects();
@@ -64,7 +77,7 @@ export default function AdminDashboard() {
   async function handleLogout() {
     // Limpa o cookie e redireciona
     document.cookie =
-      "admin_token=; path=/admins; max-age=0; SameSite=Lax";
+      "admin_token=; path=/; max-age=0; SameSite=Lax";
     router.push("/admins/login");
   }
 
@@ -104,6 +117,57 @@ export default function AdminDashboard() {
 
   function removeScreenshot(index: number) {
     setScreenshots(screenshots.filter((_, i) => i !== index));
+  }
+
+  async function uploadFile(file: File): Promise<string | null> {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/admins/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        setFeedback({ type: "error", message: data.error || "Erro no upload" });
+        return null;
+      }
+
+      const data = await res.json();
+      return data.url;
+    } catch {
+      setFeedback({ type: "error", message: "Erro de conexão no upload" });
+      return null;
+    }
+  }
+
+  async function handleFeaturedUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingFeatured(true);
+    const url = await uploadFile(file);
+    if (url) {
+      setFeaturedImage(url);
+    }
+    setUploadingFeatured(false);
+    // Reset input
+    if (featuredInputRef.current) featuredInputRef.current.value = "";
+  }
+
+  async function handleScreenshotUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingScreenshot(true);
+    const url = await uploadFile(file);
+    if (url) {
+      setScreenshots([...screenshots, url]);
+    }
+    setUploadingScreenshot(false);
+    if (screenshotInputRef.current) screenshotInputRef.current.value = "";
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -355,21 +419,52 @@ export default function AdminDashboard() {
               {/* Imagem de Destaque */}
               <div>
                 <label className="block text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-1.5">
-                  URL da Imagem de Destaque
+                  Imagem de Destaque
                 </label>
-                <input
-                  type="url"
-                  value={featuredImage}
-                  onChange={(e) => setFeaturedImage(e.target.value)}
-                  className="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600"
-                  placeholder="https://cdn.cosmicjs.com/minha-imagem.jpg"
-                />
+                <div className="flex gap-2 mb-2">
+                  <input
+                    type="url"
+                    value={featuredImage}
+                    onChange={(e) => setFeaturedImage(e.target.value)}
+                    className="flex-1 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600"
+                    placeholder="https://cdn.cosmicjs.com/minha-imagem.jpg"
+                  />
+                  <input
+                    ref={featuredInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                    onChange={handleFeaturedUpload}
+                    className="hidden"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => featuredInputRef.current?.click()}
+                    disabled={uploadingFeatured}
+                    className="inline-flex items-center gap-2 rounded-xl bg-zinc-200 dark:bg-zinc-800 px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors disabled:opacity-50"
+                  >
+                    <Upload size={16} />
+                    {uploadingFeatured ? "Enviando..." : "Upload"}
+                  </button>
+                </div>
+                {featuredImage && (
+                  <div className="mt-2 relative inline-block rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-700">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={featuredImage}
+                      alt="Preview"
+                      className="h-24 w-auto object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = "none";
+                      }}
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Screenshots */}
               <div>
                 <label className="block text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-1.5">
-                  Screenshots (URLs)
+                  Screenshots
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
@@ -380,28 +475,52 @@ export default function AdminDashboard() {
                     className="flex-1 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600"
                     placeholder="https://cdn.cosmicjs.com/screenshot.jpg"
                   />
+                  <input
+                    ref={screenshotInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                    onChange={handleScreenshotUpload}
+                    className="hidden"
+                  />
                   <button
                     type="button"
                     onClick={addScreenshot}
                     className="rounded-xl bg-zinc-200 dark:bg-zinc-800 px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors"
                   >
-                    Add
+                    Add URL
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => screenshotInputRef.current?.click()}
+                    disabled={uploadingScreenshot}
+                    className="inline-flex items-center gap-2 rounded-xl bg-zinc-200 dark:bg-zinc-800 px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors disabled:opacity-50"
+                  >
+                    <Upload size={16} />
+                    {uploadingScreenshot ? "Enviando..." : "Upload"}
                   </button>
                 </div>
                 {screenshots.length > 0 && (
-                  <div className="flex flex-col gap-1.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
                     {screenshots.map((url, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-2 rounded-lg bg-zinc-100 dark:bg-zinc-800/50 px-3 py-2 text-xs text-zinc-500 dark:text-zinc-400"
+                        className="relative group rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800"
                       >
-                        <span className="flex-1 truncate">{url}</span>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={url}
+                          alt={`Screenshot ${i + 1}`}
+                          className="h-20 w-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = "none";
+                          }}
+                        />
                         <button
                           type="button"
                           onClick={() => removeScreenshot(i)}
-                          className="text-zinc-400 hover:text-red-500 transition-colors shrink-0"
+                          className="absolute top-1 right-1 p-1 rounded-full bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
                         >
-                          <Trash2 size={14} />
+                          <Trash2 size={12} />
                         </button>
                       </div>
                     ))}

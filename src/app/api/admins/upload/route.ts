@@ -34,42 +34,42 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Validar tipo do arquivo
-    const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-    if (!allowedTypes.includes(file.type)) {
+    // Validar tipo do arquivo (qualquer image/*)
+    if (!file.type.startsWith("image/")) {
       return NextResponse.json(
-        {
-          error:
-            "Tipo de arquivo não suportado. Use JPEG, PNG, WebP ou GIF.",
-        },
+        { error: "Tipo de arquivo não suportado. Envie uma imagem." },
         { status: 400 }
       );
     }
 
-    // Validar tamanho (máx 5MB)
-    if (file.size > 5 * 1024 * 1024) {
+    // Validar tamanho (máx 10MB)
+    if (file.size > 10 * 1024 * 1024) {
       return NextResponse.json(
-        { error: "Arquivo muito grande. Máximo 5MB." },
+        { error: "Arquivo muito grande. Máximo 10MB." },
         { status: 400 }
       );
     }
 
-    // Preparar FormData para o Cosmic JS
-    const cosmicForm = new FormData();
-    cosmicForm.append("media", file, file.name);
+    // Ler o arquivo como ArrayBuffer
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
+    // Enviar para o Cosmic JS como raw binary (mais confiável que multipart)
     const res = await fetch(`${COSMIC_API}media`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${WRITE_KEY}`,
+        "Content-Type": file.type,
+        "Content-Length": buffer.length.toString(),
       },
-      body: cosmicForm,
+      body: buffer,
     });
 
     if (!res.ok) {
       const errorText = await res.text();
+      console.error("Cosmic upload error:", res.status, errorText);
       return NextResponse.json(
-        { error: `Erro ao fazer upload: ${errorText}` },
+        { error: `Erro ao fazer upload (${res.status})` },
         { status: res.status }
       );
     }
@@ -86,6 +86,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: mediaUrl }, { status: 200 });
   } catch (err) {
+    console.error("Upload error:", err);
     return NextResponse.json(
       {
         error: `Erro interno: ${
